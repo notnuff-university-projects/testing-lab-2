@@ -40,7 +40,7 @@ set(GTESTLIBS GTest::gtest_main GTest::GTest GTest::Main)
 find_package(GTest REQUIRED)
 
 enable_testing()
-add_executable(tests-all ${TESTS} ${HEADERS} ${COMPILATION_UNITS} )
+add_executable(tests-all src/main.cpp ${TESTS} ${HEADERS} ${COMPILATION_UNITS} )
 
 target_link_libraries(tests-all ${GTESTLIBS})
 
