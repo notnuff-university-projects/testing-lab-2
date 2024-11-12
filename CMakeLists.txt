@@ -48,10 +48,10 @@ include(GoogleTest)
 gtest_discover_tests(tests-all)
 
 # Add post-build command to copy the file
-add_custom_command(
-        TARGET lab2 tests-all
-        POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_SOURCE_DIR}/rsc"
-        "$<TARGET_FILE_DIR:lab2>/rsc"
-)
+#add_custom_command(
+#        TARGET lab2 tests-all
+#        POST_BUILD
+#        COMMAND ${CMAKE_COMMAND} -E copy_directory
+#        "${CMAKE_SOURCE_DIR}/rsc"
+#        "$<TARGET_FILE_DIR:lab2>/rsc"
+#)
