@@ -87,10 +87,11 @@ TEST(FileSystemIO, WriteNewNonExistingFile) {
     FileSystemIO fs;
     fs.TargetDirectory("./test");
     fs.TargetOutputFile("test-output.txt");
+    fs.TargetInputFile("test-output.txt");
 
     fs.Write("test-output");
 
-    EXPECT_TRUE( std::filesystem::exists("./test-output.txt") );
+    EXPECT_TRUE( std::filesystem::exists("./test/test-output.txt") );
     EXPECT_EQ(fs.Read(), "test-output");
 
     std::filesystem::remove("./test/test-output.txt");

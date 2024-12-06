@@ -23,35 +23,26 @@ file(GLOB_RECURSE COMPILATION_UNITS_TMP CONFIGURE_DEPENDS
 # Filter out the test files
 set(COMPILATION_UNITS "")
 foreach(file ${COMPILATION_UNITS_TMP})
-    if (NOT file MATCHES "(_test|main)\\.(cpp|c\\+\\+|cc)$")
+    if (NOT file MATCHES "(test|main)\\.(cpp|c\\+\\+|cc)$")
         list(APPEND COMPILATION_UNITS ${file})
     endif()
 endforeach()
 
 file(GLOB_RECURSE TESTS CONFIGURE_DEPENDS
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/*_test.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/*_test.c++
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/*_test.cс
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/*test.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/*test.c++
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/*test.cс
 )
 
 add_executable(lab2 src/main.cpp ${COMPILATION_UNITS} ${HEADERS})
 
-set(GTESTLIBS GTest::gtest_main GTest::GTest GTest::Main)
+set(GTESTLIBS GTest::Main GTest::gtest GTest::gmock)
 find_package(GTest REQUIRED)
 
 enable_testing()
-add_executable(tests-all src/main.cpp ${TESTS} ${HEADERS} ${COMPILATION_UNITS} )
+add_executable(tests-all ${TESTS} ${HEADERS} ${COMPILATION_UNITS} )
 
 target_link_libraries(tests-all ${GTESTLIBS})
 
 include(GoogleTest)
 gtest_discover_tests(tests-all)
-
-# Add post-build command to copy the file
-#add_custom_command(
-#        TARGET lab2 tests-all
-#        POST_BUILD
-#        COMMAND ${CMAKE_COMMAND} -E copy_directory
-#        "${CMAKE_SOURCE_DIR}/rsc"
-#        "$<TARGET_FILE_DIR:lab2>/rsc"
-#)
