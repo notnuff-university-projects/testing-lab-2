@@ -38,12 +38,12 @@ TEST(FileSystemIO, ReadNonExisting) {
     EXPECT_THROW({
         try {
             fs.Read();
-        } catch( const std::filesystem::filesystem_error& e ) {
+        } catch( const std::runtime_error& e ) {
             // and this tests that it has the correct message
             EXPECT_STREQ( "Non-existing file", e.what() );
             throw;
         }
-    }, std::filesystem::filesystem_error );
+    }, std::runtime_error );
 
 }
 
@@ -71,12 +71,12 @@ TEST(FileSystemIO, WriteFailNonExistingDirectory) {
     EXPECT_THROW({
         try {
             fs.Write("test-output-rewritten");
-        } catch( const std::filesystem::filesystem_error& e ) {
+        } catch( const std::runtime_error& e ) {
             // and this tests that it has the correct message
             EXPECT_STREQ( "Non-existing directory", e.what() );
             throw;
         }
-    }, std::filesystem::filesystem_error );
+    }, std::runtime_error );
 }
 
 // should just create new file

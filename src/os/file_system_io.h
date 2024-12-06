@@ -13,7 +13,7 @@ class FileSystemIO {
 
     // making those virtual,
     // so we could implement dependency injection in our tests
-    virtual void Write(std::string text);
+    virtual void Write(const std::string& text);
     virtual std::string Read();
 
     std::string TargetDirectory();
