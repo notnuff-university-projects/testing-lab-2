@@ -15,6 +15,9 @@ jobs:
     steps:
     - name: Install gtest
       run: sudo apt-get install libgtest-dev
+
+    - name: Install gtest
+      run: sudo apt-get install google-mock
       
     - uses: actions/checkout@v4
 
