@@ -1,5 +1,6 @@
 # Laboratory work 2
 ##### by Yaroshenko Oleksandr Serhiyovych, IM-21
+##### and Gundarev Rostyslav Oleksandrovych, IM-21
 ## Setup guide
 to install all necessary packages to run the program, simply run the following command: 
 ```bash
