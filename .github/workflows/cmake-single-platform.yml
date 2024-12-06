@@ -17,7 +17,7 @@ jobs:
       run: sudo apt-get install libgtest-dev
 
     - name: Install gmock
-      run: sudo apt-get install google-mock
+      run: sudo apt-get install google-mock libgmock-dev 
       
     - uses: actions/checkout@v4
 
