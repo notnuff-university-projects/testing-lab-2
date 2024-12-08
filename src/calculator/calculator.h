@@ -2,12 +2,21 @@
 #define CALCULATOR_H
 
 #include <string>
-#include <vector>
+
+struct CalculatorState {
+    int screen_number = 0;
+    int first_number = 0;
+    char op = 'n';
+    bool start_new_number = true;
+};
 
 class CalculatorView {
-  public:
+public:
     void AppendInput(char input_char);
     std::string GetOutput() const;
+
+protected:
+  CalculatorState current_state;
 };
 
 

@@ -12,7 +12,9 @@ int main(int argc, char **argv) {
     fs.TargetOutputFile("test-output.txt");
 
     auto parsedChars = parser::Parse( fs.Read() );
-    auto result = calculator::Calculate( parsedChars );
 
-    fs.Write( std::to_string(result) );
+    CalculatorView calc;
+    for(char parsed_char : parsedChars) calc.AppendInput( parsed_char );
+
+    fs.Write( calc.GetOutput() );
 }
