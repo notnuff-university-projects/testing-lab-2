@@ -38,6 +38,7 @@ void HandlePressKey(char input_key, CalculatorState& state) {
         operations_factory[state.op](state);
     } else {
         state.op = input_key;
+        state.first_number = state.screen_number;
         state.start_new_number = true;
     }
 
